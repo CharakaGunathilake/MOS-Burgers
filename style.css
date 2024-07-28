@@ -62,13 +62,13 @@ body {
     background-color: rgb(254, 254, 254);
 }
 
-input {
+.searchinput {
     text-indent: 33px;
     border-radius: 20px;
     border: none;
 }
 
-input:focus {
+.searchinput:focus {
     border: none;
     box-shadow: none;
 }
@@ -153,7 +153,6 @@ h3 {
     border-radius: 20px;
     overflow: hidden;
     overflow-y: scroll;
-    display: flex;
 }
 
 .page {
@@ -171,6 +170,15 @@ h3 {
     height: 70px;
     background-color: #000000;
     border-radius: 100%;
+    margin-right: 10px;
+}
+
+.amountInput {
+    width: 20px;
+    /* text-indent: 33px; */
+    text-align: center;
+    border-radius: 20px;
+    border: none;
 }
 
 @media only screen and (max-width: 1140px) {
