@@ -10,7 +10,6 @@ const navLinks = document.querySelectorAll(".nav a").
     forEach(link => {
         if (link.href.includes(`${activePage}`)) {
             link.classList.add('active');
-            console.log(activePage);
         }
     })
 
@@ -85,12 +84,14 @@ const menu = [
     ]
 ]
 
-let ind = 2;
-for (let j = 0; j < foodItems.length; j++) {
-    const main = document.querySelector(foodItems[j]);
-    let htmlString = "";
-    for (let i = 0; i < menu[j][0].length; i++) {
-        if (activePage == "/orders.html") {
+let index = 0;
+if (activePage == "/orders.html") {
+    for (let j = 0; j < foodItems.length; j++) {
+        const main = document.querySelector(foodItems[j]);
+        let htmlString = "";
+        for (let i = 0; i < menu[j][0].length; i++) {
+
+            index++;
             htmlString += `<div class="card rounded-5 m-3">
                                 <div class="card-body d-flex">
                                     <div class="w-50 d-flex align-items-center">
@@ -100,7 +101,7 @@ for (let j = 0; j < foodItems.length; j++) {
                                     </div>
                                     <div class="d-flex align-items-center gap-3 p-3 border-start border-2 border-black">
                                         <label class="bg-dark-subtle rounded-5 p-3 d-flex align-items-center">Rs. ${menu[j][2][i]} <div class="mx-2">
-                                        <button id="${ind++}" class="showDiscount btn btn-dark rounded-5 ms-2" onclick = "showDiscount(${ind})">di</button>
+                                        <button id="${index}" class="btn btn-dark rounded-5 ms-2" onclick = "showDiscount(${index})">di</button>
                                     </div></label>
                                         
                                         <div
@@ -117,36 +118,48 @@ for (let j = 0; j < foodItems.length; j++) {
                                     </div>
                                 </div>
                             </div>`
-        } else if (activePage == "/inventory.html") {
-            htmlString += `<div class="card rounded-5 m-3">
-                <div class="card-body row">
-                    <div class="col d-flex align-items-center w-25">
-                        <div class="circle">
-                
-                        </div>
-                        <label class="mx-3 fw-bold">${menu[j][0][i]} | ${menu[j][1][i]}</label>
-                    </div>
-                    <div class="col d-flex align-items-center gap-3 mx-5" style="border-left: solid black 2px;">
-                        <label class="bg-dark-subtle rounded-5 p-3">
-                            Rs. ${menu[j][2][i]}</label>
-                
-                        <div class="d-flex align-items-center p-2 gap-2 bg-danger rounded-5">
-                            <div class="mx-2 px-2 w-25">
-                            <input type="text" id="${menu[j][0][i]}" class="amountInput rounded-4" placeholder="00">
-                            </div>
-                            <button class="btn btn-dark rounded-5" onclick = "add(${menu[j][0][i]},1)">+</button>
-                            <div class="border-start border-2 border-black">
-                            <button class="btn btn-dark rounded-5 mx-2" onclick = "sub(${menu[j][0][i]},1)"> - </button>
-                            </div>
-                        </div>
-                        <button class="btn btn-success rounded-5 fw-bolder px-4">Add To Inventory</button>
-                        <button class="btn btn-outline-danger rounded-4 fw-bolder">Expired</button>
-                        <button class="btn btn-outline-danger rounded-4 fw-bolder">Delete</button>
-                    </div>
-                </div>
-                </div>`
         } main.innerHTML = htmlString;
     }
+} else if (activePage == "/inventory.html") {
+    for (let j = 0; j < foodItems.length; j++) {
+        const main = document.querySelector(foodItems[j]);
+        let htmlString = "";
+        for (let i = 0; i < menu[j][0].length; i++) {
+            htmlString += `<div class="card rounded-5 m-3">
+                    <div class="card-body row">
+                        <div class="col d-flex align-items-center w-25">
+                            <div class="circle">
+                    
+                            </div>
+                            <label class="mx-3 fw-bold">${menu[j][0][i]} | ${menu[j][1][i]}</label>
+                        </div>
+                        <div class="col d-flex align-items-center gap-3 mx-5" style="border-left: solid black 2px;">
+                            <label class="bg-dark-subtle rounded-5 p-3">
+                                Rs. ${menu[j][2][i]}</label>
+                    
+                            <div class="d-flex align-items-center p-2 gap-2 bg-danger rounded-5">
+                                <div class="mx-2 px-2 w-25">
+                                <input type="text" id="${menu[j][0][i]}" class="amountInput rounded-4" placeholder="00">
+                                </div>
+                                <button class="btn btn-dark rounded-5" onclick = "addi(${menu[j][0][i]},1)">+</button>
+                                <div class="border-start border-2 border-black">
+                                <button class="btn btn-dark rounded-5 mx-2" onclick = "subi(${menu[j][0][i]},1)"> - </button>
+                                </div>
+                            </div>
+                            <button class="btn btn-success rounded-5 fw-bolder px-4">Add To Inventory</button>
+                            <button class="btn btn-outline-danger rounded-4 fw-bolder">Expired</button>
+                            <button class="btn btn-outline-danger rounded-4 fw-bolder">Delete</button>
+                        </div>
+                    </div>
+                    </div>`
+        } main.innerHTML = htmlString;
+    }
+}
+
+
+const ar = [1, 3, 4, 6, 7, 9, 10, 12, 14, 15, 16, 18, 19, 20, 22, 23, 24, 25, 26, 27, 28, 29, 31, 33, 34, 37, 40, 41, 42, 44];
+for (let i = 0; i < ar.length; i++) {
+    document.getElementById(ar[i]).style.display = 'none';
 }
 
 let currentId;
@@ -160,12 +173,9 @@ add = (id, amount) => {
         tot += amount;
         id.value = tot;
     }
-    console.log(id.value);
 }
 sub = (id, amount) => {
-
     if (tot == 0) {
-
     } else {
         if (currentId != id) {
             tot = 0;
@@ -177,24 +187,38 @@ sub = (id, amount) => {
         }
     }
 }
-const discountsArray = [
-    discountId = [ "1", "6", "8", "11", "14", "18","22",
-    "31", "33", "36", "37", "39", "40", "44", "46","47"
-    ],
-    discountAmount = ["15%", "20%", "15%", "20%", "10%", "3%", "16%", "15%", "10%", "1%", "1%",
-    "10%", "5%", "5%", "3%", "7%"]
-];
-let displayDiscount;
-showDiscount = (id) => {
-    for(let index = 0; index < discountsArray[0].length; index++){
-        displayDiscount = document.getElementById(discountsArray[0][index]);
-        if(id != discountsArray[0][index]){
-            displayDiscount.style.display = 'none';
-            console.log(id,discountsArray[0][index]);
-        }else{
-            alert("Discount amount " + discountAmount[index]);
-            console.log(id,displayDiscount);
+addi = (id, amount) => {
+    if (currentId != id) {
+        tot = amount;
+        id.value = tot;
+        currentId = id;
+    } else {
+        tot += amount;
+        id.value = tot;
+    }
+}
+subi = (id, amount) => {
+    if (tot == 0) {
+    } else {
+        if (currentId != id) {
+            tot = 0;
+            id.value = tot;
+            currentId = id;
+        } else {
+            tot -= amount;
+            id.value = tot;
         }
     }
-    
+}
+
+const discountsArray = [
+    discountId = [2, 5, 8, 11, 13, 17, 21, 30, 32, 35, 36, 38, 39, 43, 45, 46],
+    discountAmount = [15, 20, 15, 20, 10, 3, 16, 15, 10, 1, 1, 10, 5, 5, 3, 7]
+]
+showDiscount = (index) => {
+    for (let i = 0; i < discountsArray[0].length; i++) {
+        if (index == discountsArray[0][i]) {
+            alert("Discount Amount: " + discountsArray[1][i] + "%");
+        }
+    }
 }
