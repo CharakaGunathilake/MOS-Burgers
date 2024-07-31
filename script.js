@@ -152,9 +152,9 @@ loadMenu = () => {
             } main.innerHTML = htmlString;
         }
     }
-    for (let i = 0; i < ar.length; i++) {
-        document.getElementById(ar[i]).style.display = 'none';
-    }
+    // for (let i = 0; i < ar.length; i++) {
+    //     document.getElementById(ar[i]).style.display = 'none';
+    // }
 }
 
 let index = 0;
