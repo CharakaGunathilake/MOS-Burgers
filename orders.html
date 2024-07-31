@@ -11,8 +11,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="d-flex align-items-center vh-100" onload = "hideIcon()">
-    <div class="content " >
+<body class="d-flex align-items-center vh-100" onload="loadMenu()">
+    <div class="content ">
         <div class="container ">
             <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
                 <a href="index.html"
@@ -46,13 +46,13 @@
             </div>
         </div>
 
-        
+
         <div class="overflow-hidden px-2">
             <div class="d-flex">
-                <div class="orders page reportPages p-2">
+                <div class="orders page p-2">
                     <div class="d-block w-100">
                         <div class="d-flex justify-content-end my-2">
-                            <button onclick="slide(1,1)"  class="menubtn btn">Burger</button>
+                            <button onclick="slide(1,1)" class="menubtn btn">Burger</button>
                             <button onclick="slide(2,1)" class="menubtn btn">Submarine</button>
                             <button onclick="slide(3,1)" class="menubtn btn">Fries</button>
                             <button onclick="slide(4,1)" class="menubtn btn">Pasta</button>
@@ -73,52 +73,52 @@
                                     <main class="box Chicken">
                                     </main>
                                     <main class="box Beverages">
-                                        
+
                                     </main>
-                                    <div class="d-flex position-absolute" >
+                                    <div class="d-flex position-absolute">
                                         <div class="circle bg-success p-2 z-3">
                                             <button class="btn btn-success" type="button" data-bs-toggle="offcanvas"
-                                                data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling"><i
-                                                    class="bi bi-cart"></i></button>
+                                                data-bs-target="#offcanvasScrolling"
+                                                aria-controls="offcanvasScrolling"><i class="bi bi-cart"></i></button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
                 </div>
-                <div class="orders page reportPages p-2 col-12">
-                    <div class="border border-3 border-black bg-dark-subtle rounded-4 py-2">
-                        <div class="scroll-h">
-                            <div class="scroll-object">
+                <div class="orders page p-2 col-12">
+                    <div class="display">
+                        <div class="box">
+                            <div>
                                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores expedita
-                                    architecto quos
-                                    reprehenderit ab ex deserunt laboriosam omnis perferendis hic earum
-                                    excepturi evenietLorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Maiores expedita
-                                    architecto quos
-                                    reprehenderit ab ex deserunt laboriosam omnis perferendis hic earum
-                                    excepturi evenietLorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Maiores expedita
-                                    architecto quos
-                                    reprehenderit ab ex deserunt laboriosam omnis perferendis hic earum
-                                    excepturi evenietLorem ipsum dolor sit amet consectetur adipisicing elit.
-                                    Maiores expedita
-                                    architecto quos
-                                    reprehenderit ab ex deserunt laboriosam omnis perferendis hic earum
-                                    excepturi eveniet
-                                    velit atque rerum, iure, neque in nesciunt?</p>
+                                architecto quos
+                                reprehenderit ab ex deserunt laboriosam omnis perferendis hic earum
+                                excepturi evenietLorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Maiores expedita
+                                architecto quos
+                                reprehenderit ab ex deserunt laboriosam omnis perferendis hic earum
+                                excepturi evenietLorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Maiores expedita
+                                architecto quos
+                                reprehenderit ab ex deserunt laboriosam omnis perferendis hic earum
+                                excepturi evenietLorem ipsum dolor sit amet consectetur adipisicing elit.
+                                Maiores expedita
+                                architecto quos
+                                reprehenderit ab ex deserunt laboriosam omnis perferendis hic earum
+                                excepturi eveniet
+                                velit atque rerum, iure, neque in nesciunt?</p>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="offcanvas offcanvas-start p-2" data-bs-scroll="false" data-bs-backdrop="false" tabindex="-1"
-            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+        <div class="offcanvas offcanvas-end p-2 " data-bs-scroll="false" data-bs-backdrop="false" tabindex="-1"
+            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel" style="width: 45%;">
             <div class="offcanvas-header">
-                <div class="bg-danger my-2 w-100 rounded-5">
+                <div class="my-2 w-100 rounded-5">
                     <h4 class="display-5 fw-bolder text-center text-warning">
                         Cart
                     </h4>
@@ -128,45 +128,11 @@
             </div>
             <div class="offcanvas-body">
                 <div class="cart">
-                    <div class="scroll-div">
-                        <div class="ps-0 me-5">
-                            <div class="bg-danger my-2 w-100 rounded-5">
-                                <h4 class="display-5 fw-bolder text-center text-warning">
-                                    Cart
-                                </h4>
-                            </div>
-                            <div class="bg-danger my-2 w-100 rounded-5">
-                                <h4 class="display-5 fw-bolder text-center text-warning">
-                                    Order
-                                </h4>
-                            </div>
-                            <div class="bg-danger my-2 w-100 rounded-5">
-                                <h4 class="display-5 fw-bolder text-center text-warning">
-                                    Cart
-                                </h4>
-                            </div>
-                            <div class="bg-danger my-2 w-100 rounded-5">
-                                <h4 class="display-5 fw-bolder text-center text-warning">
-                                    Cart
-                                </h4>
-                            </div>
-                            <div class="bg-danger my-2 w-100 rounded-5">
-                                <h4 class="display-5 fw-bolder text-center text-warning">
-                                    Cart
-                                </h4>
-                            </div>
-                            <div class="bg-danger my-2 w-100 rounded-5">
-                                <h4 class="display-5 fw-bolder text-center text-warning">
-                                    Cart
-                                </h4>
-                            </div>
-                            <div class="bg-danger my-2 w-100 rounded-5">
-                                <h4 class="display-5 fw-bolder text-center text-warning">
-                                    Cart
-                                </h4>
-                            </div>
+                        <div class="box" style="height: 600px;">
+                            <main class="Cart">
+
+                            </main>
                         </div>
-                    </div>
                 </div>
             </div>
             <div class="p-3">
