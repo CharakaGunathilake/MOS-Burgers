@@ -90,14 +90,16 @@ const menu = [
     ]
 ]
 
+let index = 0;
+
 loadMenu = () => {
     for (let j = 0; j < foodItems.length; j++) {
         const main = document.querySelector(foodItems[j]);
         let htmlString = "";
         for (let i = 0; i < menu[j][0].length; i++) {
-            if (activePage == "orders.html") {
+            if (activePage == "/orders.html" || activePage == "orders.html") {
                 index++;
-                htmlString += `<div class="card rounded-5 m-3">
+                htmlString +=`<div class="card rounded-5 m-3">
                                     <div class="card-body row">
                                         <div class="col d-flex align-items-center">
                                             <div class="position-relative circle col-2">
@@ -123,7 +125,8 @@ loadMenu = () => {
                                         </div>
                                     </div>
                                 </div>`
-            } else if (activePage == "inventory.html") {
+                                            
+            } else if (activePage == "inventory.html" || activePage == "/inventory.html") {
                 htmlString += `<div class="card rounded-5 m-3">
                 <div class="card-body row">
                     <div class="col d-flex align-items-center">
@@ -149,19 +152,15 @@ loadMenu = () => {
                     </div>
                 </div>
             </div>`
-            } main.innerHTML = htmlString;
+            }main.innerHTML = htmlString;
+            
         }
+        
     }
-    // for (let i = 0; i < ar.length; i++) {
-    //     document.getElementById(ar[i]).style.display = 'none';
-    // commented}
+    for (let i = 0; i < ar.length; i++) {
+        document.getElementById(ar[i]).style.display = 'none';
+    }
 }
-
-let index = 0;
-
-
-
-
 
 let currentId;
 let tot = 0;
