@@ -99,7 +99,7 @@ loadMenu = () => {
         for (let i = 0; i < menu[j][0].length; i++) {
             if (activePage == "/orders.html" || activePage == "/MOS-Burgers/orders.html") {
                 index++;
-                htmlString +=`<div class="card rounded-5 m-3">
+                htmlString += `<div class="card rounded-5 m-3">
                                     <div class="card-body row">
                                         <div class="col d-flex align-items-center">
                                             <div class="position-relative circle col-2">
@@ -125,7 +125,7 @@ loadMenu = () => {
                                         </div>
                                     </div>
                                 </div>`
-                                            
+
             } else if (activePage == "/inventory.html" || activePage == "/MOS-Burgers/inventory.html") {
                 htmlString += `<div class="card rounded-5 m-3">
                 <div class="card-body row">
@@ -152,10 +152,8 @@ loadMenu = () => {
                     </div>
                 </div>
             </div>`
-            }main.innerHTML = htmlString;
-            
+            } main.innerHTML = htmlString;
         }
-        
     }
     for (let i = 0; i < ar.length; i++) {
         document.getElementById(ar[i]).style.display = 'none';
@@ -205,22 +203,28 @@ addCustomer = () => {
     let phoneNumber = document.getElementById("customerNumber").value;
     let customerName = document.getElementById("customerName").value;
     let customerDiv = "";
-    let customerPage = document.querySelector(".customer");
-    customerDiv = `<div class="card rounded-5 m-3">
-                    <div class="card-body d-flex">
-                        <label class="me-5 fw-bold">${phoneNumber} | ${customerName}</label>
-                        <div class="d-flex justify-content-center align-items-center gap-5 px-5 border-start border-2 border-black">
+    if (phoneNumber === "" || customerName == "") {
+
+    } else {
+        let customerPage = document.querySelector(".customer");
+        customerDiv = `<div class="card rounded-5 m-3">
+                    <div class="card-body d-flex col ps-5">
+                        <div class="col d-flex align-items-center">
+                            <label class="me-5 fw-bold">${phoneNumber} | ${customerName}</label>
+                        </div>
+                        <div class="col d-flex justify-content-center align-items-center gap-5 px-5 border-start border-2 border-black">
                             <button class="btn btn-success rounded-4 fw-bolder w-100">View</button>
                             <button class="btn btn-success rounded-4 fw-bolder w-100">Edit</button>
                             <button class="btn btn-success rounded-4 fw-bolder w-100">Delete</button>
                         </div>
                     </div>
                 </div>`
-    customerPage.innerHTML += customerDiv;
+        customerPage.innerHTML += customerDiv;
+    }
 }
 
-addCart = (id,name,price) => {
-    alert("it's working",id);
+addCart = (id, name, price) => {
+    alert("it's working", id);
     let Cart = document.querySelector(".Cart");
     let itemAmt = document.getElementById(id).value;
     Cart.innerHTML += `<div class="card rounded-5 m-3 p-2">
