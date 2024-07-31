@@ -154,7 +154,7 @@ loadMenu = () => {
     }
     // for (let i = 0; i < ar.length; i++) {
     //     document.getElementById(ar[i]).style.display = 'none';
-    // }
+    // commented}
 }
 
 let index = 0;
