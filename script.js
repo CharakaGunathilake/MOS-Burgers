@@ -97,7 +97,7 @@ loadMenu = () => {
         const main = document.querySelector(foodItems[j]);
         let htmlString = "";
         for (let i = 0; i < menu[j][0].length; i++) {
-            if (activePage == "/orders.html" || activePage == "orders.html") {
+            if (activePage == "/orders.html" || activePage == "/MOS-Burgers/orders.html") {
                 index++;
                 htmlString +=`<div class="card rounded-5 m-3">
                                     <div class="card-body row">
@@ -126,7 +126,7 @@ loadMenu = () => {
                                     </div>
                                 </div>`
                                             
-            } else if (activePage == "inventory.html" || activePage == "/inventory.html") {
+            } else if (activePage == "/inventory.html" || activePage == "/MOS-Burgers/inventory.html") {
                 htmlString += `<div class="card rounded-5 m-3">
                 <div class="card-body row">
                     <div class="col d-flex align-items-center">
