@@ -2,6 +2,10 @@ const pages = document.querySelectorAll(".box");
 const orderPages = document.querySelectorAll(".orders");
 const reportPages = document.querySelectorAll(".report");
 const btns = document.querySelectorAll(".menubtn");
+
+const customerArray = new Array(100);
+let nextIndex = 0;
+
 const translateAmount = 100;
 let translate = 0;
 
@@ -53,40 +57,37 @@ const menu = [
             "Chicken Burger (Large)", "Chicken Burger (Regular)", "Cheese Burger (Large)", "Cheese Burger (Regular)",
             "Bacon Burger", "Shawarma Burger", "Olive Burger", "Double-Cheese Burger", "Crispy Chicken Burger (Regular)",
             "Crispy Chicken Burger (Large) ", "Paneer Burger"],
-        price = ["750.00 ", "1500.00", "1600.00", "1400.00", "800.00", "1000.00 ", "600.00", "650.00", "800.00",
-            "1800.00", "1250.00", "1200.00", "1600.00", "900.00"
-        ]
+        price = [750.00, 1500.00, 1600.00, 1400.00, 800.00, 1000.00,600.00, 650.00, 800.00,1800.00, 1250.00, 1200.00, 1600.00, 900.00 ]
     ],
     submarine = [
         id = ["B1016", "B1017", "B1018", "B1019", "B1020", "B1021", "B1022", "B1023", "B1024"],
         item = ["Crispy Chicken Submarine (Large)", "Crispy Chicken Submarine (Regular) ", "Chicken Submarine (Large)",
             "Chicken Submarine (Regular) ", "Grinder Submarine", "Cheese Submarine ", "Double Cheese n Chicken Submarine ",
             "Special Horgie Submarine", "MOS Special Submarine"],
-        price = ["2000.00", "1500.00", "1800.00", "1400.00", "2300.00", "2200.00 ", "1900.00", "2800.00", "3000.00"
-        ]
+        price = [2000.00, 1500.00, 1800.00, 1400.00, 2300.00, 2200.00, 1900.00, 2800.00, 3000.00]
     ],
     fries = [
         id = ["B1025", "B1026", "B1027", "B1028", "B1029", "B1030"],
         item = ["Steak Fries (Large) ", "Steak Fries (Medium)", "French Fries (Large) ",
             "French Fries (Medium)  ", "French Fries (Small)", "Sweet Potato Fries (Large)"],
-        price = ["1200.00", "600.00", "800.00", "650.00", "450.00", "600.00 "]
+        price = [1200.00, 600.00, 800.00, 650.00, 450.00, 600.00]
     ],
     pasta = [
         id = ["B1031", "B1032", "B1033", "B1034", "B1035", "B1036", "B1037"],
         item = ["Chicken n Cheese Pasta", "Chicken Penne Pasta", "Ground Turkey Pasta Bake",
             "Creamy Shrimp Pasta ", "Lemon Butter Pasta", "Tagliatelle Pasta ", "Baked Ravioli"],
-        price = ["1600.00", "1700.00", "2900.00", "2000.00", "1950.00", "2400.00", "2000.00"]
+        price = [1600.00, 1700.00, 2900.00, 2000.00, 1950.00, 2400.00, 2000.00]
     ],
     chicken = [
         id = ["B1038", "B1039", "B1040", "B1041", "B1042", "B1043"],
         item = ["Fried Chicken (Small)", "Fried Chicken (Regular)", "Fried Chicken (Large)",
             "Hot Wings (Large)", "Devilled Chicken (Large) ", "BBQ Chicken (Regular)"],
-        price = ["1200.00", "2300.00", "3100.00", "2400.00", "900.00", "2100.00"]
+        price = [1200.00, 2300.00, 3100.00, 2400.00, 900.00, 2100.00]
     ],
     beverages = [
         id = ["B1044", "B1045", "B1046", "B1047"],
         item = ["Pepsi (330ml) ", "Coca-Cola (330ml) ", "Sprite (330ml)", "Mirinda (330ml)"],
-        price = ["990.00", "1230.00", "1500.00", "850.00"]
+        price = [990.00, 1230.00, 1500.00, 850.00]
     ]
 ]
 
@@ -121,7 +122,7 @@ loadMenu = () => {
                                                     <button class="btn btn-dark rounded-5 ms-2" onclick = "sub(${menu[j][0][i]},1)">-</button>
                                                 </div>
                                             </div>
-                                            <button class="btn btn-success rounded-4 ms-2" onclick = "addCart('${menu[j][0][i]}','${menu[j][1][i]}','${menu[j][2][i]}')">Add To Cart</button>
+                                            <button class="btn btn-success rounded-4 ms-2" onclick = "addCart('${menu[j][0][i]}','${menu[j][1][i]}',${index},${menu[j][2][i]})">Add To Cart</button>
                                         </div>
                                     </div>
                                 </div>`
@@ -207,7 +208,7 @@ addCustomer = () => {
 
     } else {
         let customerPage = document.querySelector(".customer");
-        customerDiv = `<div class="card rounded-5 m-3">
+        customerDiv = `<div id = "${phoneNumber}" class="card rounded-5 m-3">
                     <div class="card-body d-flex col ps-5">
                         <div class="col d-flex align-items-center">
                             <label class="me-5 fw-bold">${phoneNumber} | ${customerName}</label>
@@ -215,24 +216,75 @@ addCustomer = () => {
                         <div class="col d-flex justify-content-center align-items-center gap-5 px-5 border-start border-2 border-black">
                             <button class="btn btn-success rounded-4 fw-bolder w-100">View</button>
                             <button class="btn btn-success rounded-4 fw-bolder w-100">Edit</button>
-                            <button class="btn btn-success rounded-4 fw-bolder w-100">Delete</button>
+                            <button class="btn btn-success rounded-4 fw-bolder w-100" onclick = "removeItem('${phoneNumber}')">Delete</button>
                         </div>
                     </div>
                 </div>`
         customerPage.innerHTML += customerDiv;
-    }
+    }customerArray[nextIndex++] = customerName;
+    
+    console.log(customerArray[nextIndex-1],nextIndex);
 }
-
-addCart = (id, name, price) => {
-    alert("it's working", id);
-    let Cart = document.querySelector(".Cart");
+let totDiscount = 0;
+let totPrice = 0;
+let cartId = "I00"
+let cartIdInt = 1;
+addCart = (id, name, disId, price) => {
+    let idTemp = cartId + (cartIdInt++);
     let itemAmt = document.getElementById(id).value;
-    Cart.innerHTML += `<div class="card rounded-5 m-3 p-2">
+    totPrice += (price * (itemAmt == 0? 1: itemAmt));
+    alert((itemAmt == 0 ? 1 : itemAmt) + " " + name + " added to cart");
+    for (let i = 0; i < discountsArray[0].length; i++) {
+        if(disId == discountsArray[0][i]){
+            totDiscount += discountsArray[1][i];
+            document.getElementById("Discount").innerHTML = totDiscount + "%";
+        }
+    }
+
+    let Cart = document.querySelector(".Cart");
+    document.getElementById("Price").innerHTML = "Rs. " + totPrice;
+    document.getElementById("Total").innerHTML = "Rs. " + (totPrice - (totPrice * (totDiscount/100)));
+    Cart.innerHTML += `<div id="${idTemp}" class="card rounded-5 m-3 p-2">
                     <div class="card-body d-flex justify-content-between">
+                        <div class="border-1 border w-100 p-3 mx-3 rounded-5 d-flex justify-content-between  align-items-center">
                             <label class="me-5 fw-bold">${id} | ${name} | ${price}</label> 
                             <label class="me-5 fw-bold p-2 rounded-5 bg-danger text-white">X${itemAmt == 0 ? 1 : itemAmt}</label>
+                        </div>
+                        <div class="pb-5">
+                            <button class="btn btn-outline-danger rounded-5 fw-bolder text-warning" onclick = "removeItem('${idTemp}')">X</button>
                         </div>
                     </div>
                 </div>`
 }
+let orderId = "OR00"
+let idInt = 1;
+newOrder = () => {
+    alert("Order placed Successfully!");
+    let idTemp = orderId + (idInt++);
+    let orderDiv = "";
+        let orderPage = document.querySelector(".ordered");
+        orderDiv = `<div id="${idTemp}" class="card rounded-5 m-3">
+                    <div class="card-body d-flex col ps-5">
+                        <div class="col d-flex align-items-center">
+                            <label class="me-5 fw-bold">${idTemp} | ${customerArray[0]}</label>
+                        </div>
+                        <div class="col d-flex justify-content-center align-items-center gap-5 px-5 border-start border-2 border-black">
+                            <button class="btn btn-success rounded-4 fw-bolder w-100">View</button>
+                            <button class="btn btn-success rounded-4 fw-bolder w-100">Edit</button>
+                            <button class="btn btn-success rounded-4 fw-bolder w-100" onclick = "removeItem('${idTemp}')">Delete</button>
+                        </div>
+                        
+                    </div>
+                </div>`
+        orderPage.innerHTML += orderDiv;
+}
 
+removeItem = (reIndex) =>{
+    console.log("working",id);
+    let element = document.getElementById(reIndex);
+    element.remove(); 
+    
+    document.getElementById("Price").innerHTML = "Rs. 0.00";
+    document.getElementById("Discount").innerHTML = "0%";
+    document.getElementById("Total").innerHTML = "Rs. 0.00";
+}

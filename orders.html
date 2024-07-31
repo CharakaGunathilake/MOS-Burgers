@@ -89,15 +89,17 @@
                 </div>
                 <div class="orders page p-2 col-12">
                     <div class="display col-12">
-                        <div class="page overflow-hidden overflow-y-scroll" style="max-height: 400px;">
-                            
+                        <div class="overflow-hidden overflow-y-scroll" style="max-height: 400px;">
+                            <main class="ordered">
+
+                            </main>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="offcanvas offcanvas-end p-2 " data-bs-scroll="false" data-bs-backdrop="false" tabindex="-1"
-            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel" style="width: 45%;">
+        <div class="cartDiv offcanvas offcanvas-end p-2 " data-bs-scroll="false" data-bs-backdrop="false" tabindex="-1"
+            id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel" style="width: 55%;">
             <div class="offcanvas-header">
                 <div class="my-2 w-100 rounded-5">
                     <h4 class="display-5 fw-bolder text-center text-warning">
@@ -109,15 +111,32 @@
             </div>
             <div class="offcanvas-body">
                 <div class="cart">
-                        <div class="box" style="height: 600px;">
+                        <div class="overflow-hidden overflow-y-scroll w-100" style="height: 550px;">
                             <main class="Cart">
 
                             </main>
                         </div>
                 </div>
+                <div class="container">
+                    <main class="row p-3 d-block">
+                        <div class="w-100 col d-flex my-2 justify-content-between">
+                            <label class="fst-italic row ">Price:</label>
+                            <label id="Price" class="fst-italic row ">Rs. 0.00</label>
+                        </div>
+                        <div class="w-100 col d-flex my-2 justify-content-between">
+                            <label class="fst-italic row ">Discount%:</label>
+                            <label id="Discount" class="fst-italic row ">0%</label>
+                        </div>
+                        <hr>
+                        <div class="w-100 col d-flex my-2 justify-content-between">
+                            <label class="fst-italic row ">Total Price:</label>
+                            <label id="Total" class="fst-italic row ">Rs. 0.00</label>
+                        </div>
+                    </main>
+                </div>
             </div>
             <div class="p-3">
-                <button class="menubtn btn rounded-5 fs-2 text-white fw-bolder">Checkout</button>
+                <button class="menubtn btn rounded-5 fs-2 text-white fw-bolder" onclick="newOrder()">Checkout</button>
             </div>
         </div>
         <script src="script.js"></script>
