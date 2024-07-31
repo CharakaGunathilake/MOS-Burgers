@@ -95,7 +95,7 @@ loadMenu = () => {
         const main = document.querySelector(foodItems[j]);
         let htmlString = "";
         for (let i = 0; i < menu[j][0].length; i++) {
-            if (activePage == "/orders.html") {
+            if (activePage == "orders.html") {
                 index++;
                 htmlString += `<div class="card rounded-5 m-3">
                                     <div class="card-body row">
@@ -123,7 +123,7 @@ loadMenu = () => {
                                         </div>
                                     </div>
                                 </div>`
-            } else if (activePage == "/inventory.html") {
+            } else if (activePage == "inventory.html") {
                 htmlString += `<div class="card rounded-5 m-3">
                 <div class="card-body row">
                     <div class="col d-flex align-items-center">
@@ -208,16 +208,15 @@ addCustomer = () => {
     let customerDiv = "";
     let customerPage = document.querySelector(".customer");
     customerDiv = `<div class="card rounded-5 m-3">
-    <div class="card-body row">
-            <label class="me-5 fw-bold">${phoneNumber} | ${customerName}</label>
-        </div>
-        <div class="col d-flex justify-content-center align-items-center gap-5 px-5 border-start border-2 border-black">
-            <button class="btn btn-success rounded-4 fw-bolder w-100">View</button>
-            <button class="btn btn-success rounded-4 fw-bolder w-100">Edit</button>
-            <button class="btn btn-success rounded-4 fw-bolder w-100">Delete</button>
-        </div>
-    </div>
-</div>`
+                    <div class="card-body d-flex">
+                        <label class="me-5 fw-bold">${phoneNumber} | ${customerName}</label>
+                        <div class="d-flex justify-content-center align-items-center gap-5 px-5 border-start border-2 border-black">
+                            <button class="btn btn-success rounded-4 fw-bolder w-100">View</button>
+                            <button class="btn btn-success rounded-4 fw-bolder w-100">Edit</button>
+                            <button class="btn btn-success rounded-4 fw-bolder w-100">Delete</button>
+                        </div>
+                    </div>
+                </div>`
     customerPage.innerHTML += customerDiv;
 }
 
